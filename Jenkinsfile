@@ -25,7 +25,7 @@ pipeline {
       steps {
         script {
             echo "Deploy app ${params.APP_NAME}"
-            sh "ssh -o StrictHostKeyChecking=no -i ~/.certs/id_rsa root@${dockerserver} 'docker stop api ; docker rm api'"
+            // sh "ssh -o StrictHostKeyChecking=no -i ~/.certs/id_rsa root@${dockerserver} 'docker stop api ; docker rm api'"
             sh "ssh -o StrictHostKeyChecking=no -i ~/.certs/id_rsa root@${dockerserver} 'docker run -dti --name api --network devops_control_vv_develop_db_network -p 5001:5000 ${params.APP_NAME}'"
         }
       }
